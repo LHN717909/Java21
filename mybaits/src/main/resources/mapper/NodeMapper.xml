@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.NodeMapper">
+
+    <cache/>
+    <!--<cache size="2048" readOnly="false" eviction="FIFO" flushInterval="60000"/>-->
+
+    <!--
+        flushCache:false 执行后不刷新缓存
+    -->
+    <insert id="batchSave" parameterType="list" flushCache="false">
+        INSERT  INTO t_node(nodename) VALUES
+        <foreach collection="list" item="node" separator=",">
+            (#{node.nodename})
+        </foreach>
+    </insert>
+    <delete id="del">
+        DELETE FROM t_node WHERE id = #{id}
+    </delete>
+
+    <select id="findByIds" parameterType="list" resultType="com.kaishengit.pojo.Node">
+        SELECT * FROM t_node WHERE id IN
+        <foreach collection="list" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <!--
+        userCache：false 该语句不被缓存
+    -->
+    <select id="findById" resultType="com.kaishengit.pojo.Node" useCache="false">
+        SELECT * FROM t_node WHERE id = #{id}
+    </select>
+    <select id="findAll" resultType="com.kaishengit.pojo.Node">
+        SELECT * FROM t_node
+    </select>
+
+
+</mapper>

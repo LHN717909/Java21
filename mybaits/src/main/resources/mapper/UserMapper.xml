@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.UserMapper">
+
+
+
+
+
+    <select id="findByPage" resultType="User">
+        SELECT * FROM t_user limit ${start},${size}
+    </select>
+
+
+
+    <!--
+        <where>
+        1. 当where中的条件有任意的一个成立，则添加where关键字
+        2. 任意的字句以and或or开头，则去掉
+    -->
+    <select id="findByQueryParam" parameterType="map" resultType="User">
+        SELECT * FROM t_user
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+
+            <choose>
+                <when test="password != null and password != ''">
+                    and password = #{password}
+                </when>
+                <when test="email != null and email != ''">
+                    and email = #{email}
+                </when>
+                <!--<otherwise>
+                    and 1 = 1
+                </otherwise>-->
+            </choose>
+
+            <!--<if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>-->
+        </trim>
+    </select>
+
+    <select id="findByParams" resultType="User">
+        SELECT * FROM t_user WHERE username = #{username} and password = #{pwd}
+       <!-- SELECT * FROM t_user WHERE username = #{param1} and password = #{param2}-->
+    </select>
+
+
+    <select id="findByMap" resultType="User" parameterType="map">
+        SELECT * FROM t_user WHERE username = #{username} and password = #{password}
+    </select>
+
+
+
+    <!--
+        public User findById(Integer id)
+
+        int integer -> Integer
+        _int -> int
+
+        id: 类似方法名字
+        parameterType: 方法传入参数的类型
+        resultType：方法的返回类型(需要写pojo的完全限定名=包名+类名)
+    -->
+    <select id="findById" parameterType="int" resultType="com.kaishengit.pojo.User" resultMap="userMap">
+        SELECT t_user.id, username, password, email, avatar, createtime, loginip, logintime, state,
+        t_tag.tagname,t_tag.id as 'tagid'
+        FROM t_user
+        INNER JOIN t_tag ON t_user.id = t_tag.userid
+        WHERE t_user.id = #{id}
+    </select>
+
+    <resultMap id="userMap" type="com.kaishengit.pojo.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="avatar" property="avatar"/>
+        <result column="createtime" property="createtime"/>
+        <result column="loginip" property="loginip"/>
+        <result column="logintime" property="logintime"/>
+        <result column="state" property="state"/>
+        <collection property="tagList" ofType="com.kaishengit.pojo.Tag">
+            <id column="tagid" property="id"/>
+            <result column="tagname" property="tagname"/>
+        </collection>
+    </resultMap>
+
+
+
+    <!--
+        save(User user)
+        useGeneratedKeys="true" 代表需要获取自动生成的增长主键值
+        keyProperty="id" 将主键值赋值给参数对象的哪个属性(setXXX)
+    -->
+    <insert id="save" parameterType="com.kaishengit.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user(username, password, email, avatar, createtime, loginip, logintime, state)
+        VALUES (#{username},#{password},#{email},#{avatar},#{createtime},#{loginip},#{logintime},#{state})
+    </insert>
+
+    <update id="update" parameterType="User">
+        UPDATE t_user
+         set
+            password = #{password},
+             email = #{email},
+             avatar=#{avatar},
+             loginip=#{loginip},
+             logintime=#{logintime},
+             state=#{state}
+        where id = #{id}
+    </update>
+
+    <delete id="del" parameterType="int">
+        DELETE FROM t_user WHERE id = #{id}
+    </delete>
+
+    <select id="findAll" resultType="User">
+        SELECT * FROM t_user
+    </select>
+
+
+</mapper>
+

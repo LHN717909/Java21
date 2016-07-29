@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--开启基于注解的Bean管理和DI-->
+    <context:component-scan base-package="com.kaishengit"/>
+
+    <!--读取ClassPath中的config.properties文件-->
+    <context:property-placeholder location="classpath:config.properties"/>
+
+    <!--配置数据源(数据库连接池)-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+
+        <property name="maxWaitMillis" value="${jdbc.maxwait}"/>
+        <property name="initialSize" value="${jdbc.initsize}"/>
+        <property name="maxTotal" value="${jdbc.maxsize}"/>
+        <property name="maxIdle" value="${jdbc.maxidle}"/>
+        <property name="minIdle" value="${jdbc.minidle}"/>
+    </bean>
+
+    <!--配置MyBatis的SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--将pojo包中的所有类声明别名为类的名字-->
+        <property name="typeAliasesPackage" value="com.kaishengit.pojo"/>
+        <!--自动加载classpath 中的mapper文件夹中的所有xml-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!--自动扫描Mapper 1.告诉MyBatis Mapper接口的位置 2.将所有Mapper放入Spring容器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.kaishengit.mapper"/>
+    </bean>
+
+
+    <!--JDBC事务管理器-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--基于注解的事务  @Transactional -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--基于XML的事务-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            &lt;!&ndash;<tx:method name="find*" read-only="true"/>
+            <tx:method name="save*"/>&ndash;&gt;
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut expression="execution(* com.kaishengit.service..*.*(..))"  id="myPointcut"/>
+        <aop:advisor advice-ref="txAdvice"/>
+    </aop:config>-->
+
+
+
+</beans>
