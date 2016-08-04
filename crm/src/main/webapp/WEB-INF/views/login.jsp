@@ -80,11 +80,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery 2.2.0 -->
-<script src="/static/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<%--<script src="/static/plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="/static/plugins/iCheck/icheck.min.js"></script>
+<script src="/static/plugins/iCheck/icheck.min.js"></script>--%>
 <script>
     $(function () {
         $('input').iCheck({

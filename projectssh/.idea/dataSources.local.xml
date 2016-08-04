@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - kaisheng_hospital@localhost" uuid="7cd10c50-774a-4a94-b0d6-6825d2408103">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>kaisheng_hospital.*</schema-pattern>
+      <default-schemas>kaisheng_hospital.*</default-schemas>
+    </data-source>
+  </component>
+</project>

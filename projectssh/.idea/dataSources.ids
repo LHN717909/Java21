@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - kaisheng_hospital@localhost" uuid="7cd10c50-774a-4a94-b0d6-6825d2408103">
+    <database-info product="MySQL" version="5.7.10-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="kaisheng_hospital"/>
+      <table id="2" parent="1" name="t_kind"/>
+      <table id="3" parent="1" name="t_office"/>
+      <table id="4" parent="1" name="t_painter"/>
+      <table id="5" parent="1" name="t_painter_state"/>
+      <table id="6" parent="1" name="t_type"/>
+      <table id="7" parent="1" name="t_user"/>
+      <table id="8" parent="1" name="t_lizename"/>
+      <column id="9" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="10" parent="2" name="name">
+        <comment>病的名称</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="11" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="12" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="13" parent="3" name="name">
+        <comment>部门名称</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="14" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="15" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="16" parent="4" name="name">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="17" parent="4" name="sex">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="18" parent="4" name="address">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="19" parent="4" name="phone">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="20" parent="4" name="type">
+        <comment>医保类型</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="21" parent="4" name="state">
+        <comment>状态</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="22" parent="4" name="creattime">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="23" parent="4" name="t_kind_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="24" parent="4" name="t_type_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="25" parent="4" name="t_painter_state_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="26" parent="4" name="fk_t_painter_t_kind1_idx">
+        <columns>t_kind_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="27" parent="4" name="fk_t_painter_t_painter_state1_idx">
+        <columns>t_painter_state_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="28" parent="4" name="fk_t_painter_t_type1_idx">
+        <columns>t_type_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="29" parent="4" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="30" parent="4" name="fk_t_painter_t_kind1">
+        <columns>t_kind_id</columns>
+        <ref-key>~.t_kind.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="31" parent="4" name="fk_t_painter_t_painter_state1">
+        <columns>t_painter_state_id</columns>
+        <ref-key>~.t_painter_state.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="32" parent="4" name="fk_t_painter_t_type1">
+        <columns>t_type_id</columns>
+        <ref-key>~.t_type.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="33" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="34" parent="5" name="name">
+        <comment>状态名称</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="35" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="36" parent="6" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="37" parent="6" name="name">
+        <comment>医保类型</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="38" parent="6" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="39" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="40" parent="7" name="name">
+        <comment>用户名</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="41" parent="7" name="password">
+        <comment>登录密码</comment>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="42" parent="7" name="creattime">
+        <comment>创建时间</comment>
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="43" parent="7" name="t_lize_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="44" parent="7" name="t_office_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="45" parent="7" name="fk_t_user_t_lize_idx">
+        <columns>t_lize_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="46" parent="7" name="fk_t_user_t_office1_idx">
+        <columns>t_office_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="47" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="48" parent="7" name="fk_t_user_t_lize">
+        <columns>t_lize_id</columns>
+        <ref-key>~.t_lizename.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="49" parent="7" name="fk_t_user_t_office1">
+        <columns>t_office_id</columns>
+        <ref-key>~.t_office.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="50" parent="8" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="51" parent="8" name="lizename">
+        <comment>职位名称</comment>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="52" parent="8" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

@@ -3,7 +3,6 @@ package com.kaishengit.service;
 import com.kaishengit.mapper.DocumentMapper;
 import com.kaishengit.pojo.Document;
 import com.kaishengit.util.ShiroUtil;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;

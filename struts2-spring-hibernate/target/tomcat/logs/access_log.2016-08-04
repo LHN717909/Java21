@@ -1,0 +1,11 @@
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:16 +0800] "GET /book/list HTTP/1.1" 200 6337 http-bio-80-exec-1 2952
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:16 +0800] "GET /repo/css/bootstrap.min.css HTTP/1.1" 200 122540 http-bio-80-exec-3 11
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:16 +0800] "GET /repo/js/jquery-1.11.3.min.js HTTP/1.1" 200 95957 http-bio-80-exec-2 9
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:16 +0800] "GET /repo/js/jquery.twbsPagination.min.js HTTP/1.1" 200 5277 http-bio-80-exec-4 8
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:17 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-80-exec-7 6
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:25 +0800] "GET /book/list?p=2&q_s_like_bookname_or_bookauthor=&q_f_ge_bookprice=&q_f_le_bookprice=&q_i_eq_bookType.id=&q_i_eq_publisher.id= HTTP/1.1" 200 6337 http-bio-80-exec-8 117
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:26 +0800] "GET /book/list?p=3&q_s_like_bookname_or_bookauthor=&q_f_ge_bookprice=&q_f_le_bookprice=&q_i_eq_bookType.id=&q_i_eq_publisher.id= HTTP/1.1" 200 6355 http-bio-80-exec-9 97
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:27 +0800] "GET /book/list?p=4&q_s_like_bookname_or_bookauthor=&q_f_ge_bookprice=&q_f_le_bookprice=&q_i_eq_bookType.id=&q_i_eq_publisher.id= HTTP/1.1" 200 6375 http-bio-80-exec-10 99
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:28 +0800] "GET /book/list?p=5&q_s_like_bookname_or_bookauthor=&q_f_ge_bookprice=&q_f_le_bookprice=&q_i_eq_bookType.id=&q_i_eq_publisher.id= HTTP/1.1" 200 6326 http-bio-80-exec-10 91
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:29 +0800] "GET /book/list?p=6&q_s_like_bookname_or_bookauthor=&q_f_ge_bookprice=&q_f_le_bookprice=&q_i_eq_bookType.id=&q_i_eq_publisher.id= HTTP/1.1" 200 4603 http-bio-80-exec-10 135
+0:0:0:0:0:0:0:1 - - [04/Aug/2016:11:33:32 +0800] "GET /book/list?p=1&q_s_like_bookname_or_bookauthor=&q_f_ge_bookprice=&q_f_le_bookprice=&q_i_eq_bookType.id=&q_i_eq_publisher.id= HTTP/1.1" 200 6337 http-bio-80-exec-10 93
